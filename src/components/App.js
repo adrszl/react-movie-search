@@ -9,6 +9,8 @@ import axios from "axios";
 
 const MOVIE_API_URL = "https://www.omdbapi.com/?s=man&apikey=a9aed1bd";
 
+// DESIGN SYSTEM: https://ant.design/
+
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -64,7 +66,7 @@ const App = () => {
   return (
     <div className="App">
       <div className="m-container">
-        <Header text="HOOKED" />
+        <Header text="HOOKED" onClick={ () => refreshPage() } />
 
         <Search search={search} />
 
