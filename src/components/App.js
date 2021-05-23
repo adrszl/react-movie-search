@@ -66,7 +66,7 @@ const App = () => {
   return (
     <div className="App">
       <div className="m-container">
-        <Header text="HOOKED" onClick={ () => refreshPage() } />
+        <Header onClick={ () => refreshPage() } />
 
         <Search search={search} />
 

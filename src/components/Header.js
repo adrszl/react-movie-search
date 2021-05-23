@@ -1,10 +1,18 @@
 import React from "react";
+import { PageHeader } from "antd";
+
+const headerStyles = {
+  backgroundColor: '#98c1ff'
+}
 
 const Header = (props) => {
   return (
-    <header className="App-header">
-      <h2>{props.text}</h2>
-    </header>
+    <PageHeader
+      className="site-page-header"
+      title="Adrian Szlegel - React Movie Search"
+      subTitle="With the use of Ant Design"
+      style={headerStyles}
+    />
   );
 };
 
