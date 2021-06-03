@@ -1,5 +1,8 @@
 import React, { useReducer, useEffect } from "react";
 
+// ANT DESIGN
+import { Row, Col, Divider } from "antd";
+
 import Header from "./Header";
 import Movie from "./Movie";
 import spinner from "../assets/ajax-loader.gif";
@@ -15,10 +18,10 @@ const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    axios.get(MOVIE_API_URL).then(jsonResponse => {
+    axios.get(MOVIE_API_URL).then((jsonResponse) => {
       dispatch({
         type: "SEARCH_MOVIES_SUCCESS",
-        payload: jsonResponse.data.Search
+        payload: jsonResponse.data.Search,
       });
     });
   }, []);
@@ -28,22 +31,22 @@ const App = () => {
     window.location.reload();
   };
 
-  const search = searchValue => {
+  const search = (searchValue) => {
     dispatch({
-      type: "SEARCH_MOVIES_REQUEST"
+      type: "SEARCH_MOVIES_REQUEST",
     });
 
     axios(`https://www.omdbapi.com/?s=${searchValue}&apikey=a9aed1bd`).then(
-      jsonResponse => {
+      (jsonResponse) => {
         if (jsonResponse.data.Response === "True") {
           dispatch({
             type: "SEARCH_MOVIES_SUCCESS",
-            payload: jsonResponse.data.Search
+            payload: jsonResponse.data.Search,
           });
         } else {
           dispatch({
             type: "SEARCH_MOVIES_FAILURE",
-            error: jsonResponse.data.Error
+            error: jsonResponse.data.Error,
           });
         }
       }
@@ -59,20 +62,32 @@ const App = () => {
       <div className="errorMessage">{errorMessage}</div>
     ) : (
       movies.map((movie, index) => (
-        <Movie key={`${index}-${movie.Title}`} movie={movie} />
+        <Col key={`${index}-${movie.Title}`} span={5}>
+          <Movie movie={movie} />
+        </Col>
       ))
     );
 
   return (
     <div className="App">
       <div className="m-container">
-        <Header onClick={ () => refreshPage() } />
+        <Header onClick={() => refreshPage()} />
 
-        <Search search={search} />
+        {/* search section start */}
+        <Divider orientation="center">Movie Search</Divider>
+        <Row justify="center">
+          <Col className="gutter-row" span={12}>
+            <Search search={search} loading={loading} />
+          </Col>
+        </Row>
+        {/* search section end */}
 
-        <p className="App-intro">Sharing a few of our favourite movies</p>
-
-        <div className="movies">{retrievedMovies}</div>
+        {/* movie results start */}
+        <Divider orientation="center">Results</Divider>
+        <Row justify="start">
+          {retrievedMovies}
+        </Row>
+        {/* movie results end */}
       </div>
     </div>
   );
