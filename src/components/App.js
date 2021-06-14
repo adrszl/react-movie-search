@@ -84,7 +84,7 @@ const App = () => {
 
         {/* movie results start */}
         <Divider orientation="center">Results</Divider>
-        <Row justify="start">
+        <Row justify="center">
           {retrievedMovies}
         </Row>
         {/* movie results end */}
