@@ -92,7 +92,7 @@ const App = () => {
             </Row>
             {/* movie results end */}
             <Footer style={{ textAlign: 'center' }}>
-              <a href="https://adrszl.github.io/" target="_blank" rel="noopener noreferrer">>Adrian Szlegel</a> ©2021
+              <a href="https://adrszl.github.io/" target="_blank" rel="noopener noreferrer">Adrian Szlegel</a> ©2021
             </Footer>
           </Content>
         </div>
