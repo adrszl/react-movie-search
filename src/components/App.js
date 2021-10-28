@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect } from "react";
 
 // ANT DESIGN
-import { Row, Col, Divider } from "antd";
+import { Layout, Row, Col, Divider } from "antd";
 
 import Header from "./Header";
 import Movie from "./Movie";
@@ -54,6 +54,7 @@ const App = () => {
   };
 
   const { movies, errorMessage, loading } = state;
+  const { Content, Footer } = Layout;
 
   const retrievedMovies =
     loading && !errorMessage ? (
@@ -62,34 +63,39 @@ const App = () => {
       <div className="errorMessage">{errorMessage}</div>
     ) : (
       movies.map((movie, index) => (
-        <Col key={`${index}-${movie.Title}`} span={5}>
+        <Col key={`${index}-${movie.Title}`} span={5} style={{marginBottom: ".5rem"}}>
           <Movie movie={movie} />
         </Col>
       ))
     );
 
   return (
-    <div className="App">
-      <div className="m-container">
-        <Header onClick={() => refreshPage()} />
+    <Layout>
+      <div className="App">
+        <div className="m-container">
+          <Header onClick={() => refreshPage()} />
 
-        {/* search section start */}
-        <Divider orientation="center">Movie Search</Divider>
-        <Row justify="center">
-          <Col className="gutter-row" span={12}>
-            <Search search={search} loading={loading} />
-          </Col>
-        </Row>
-        {/* search section end */}
+          <Content>
+            {/* search section start */}
+            <Divider orientation="center">Movie Search</Divider>
+            <Row justify="center">
+              <Col className="gutter-row" span={12}>
+                <Search search={search} loading={loading} />
+              </Col>
+            </Row>
+            {/* search section end */}
 
-        {/* movie results start */}
-        <Divider orientation="center">Results</Divider>
-        <Row justify="center">
-          {retrievedMovies}
-        </Row>
-        {/* movie results end */}
+            {/* movie results start */}
+            <Divider orientation="center">Results</Divider>
+            <Row justify="center">
+              {retrievedMovies}
+            </Row>
+            {/* movie results end */}
+            <Footer style={{ textAlign: 'center' }}><a href="https://adrszl.github.io/" target="_blank">Adrian Szlegel</a> ©2021</Footer>
+          </Content>
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 
