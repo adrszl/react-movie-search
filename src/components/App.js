@@ -3,6 +3,9 @@ import React, { useReducer, useEffect } from "react";
 // ANT DESIGN
 import { Layout, Row, Col, Divider } from "antd";
 
+// CUSTOM CSS TWEAKS
+import "../App.css"
+
 import Header from "./Header";
 import Movie from "./Movie";
 import spinner from "../assets/ajax-loader.gif";
@@ -92,7 +95,7 @@ const App = () => {
             </Row>
             {/* movie results end */}
             <Footer style={{ textAlign: 'center' }}>
-              <a href="https://adrszl.github.io/" target="_blank" rel="noopener noreferrer">Adrian Szlegel</a> ©2021
+              <a href="https://adrszl.github.io/" target="_blank" rel="noopener noreferrer">Adrian Szlegel</a> ©2022
             </Footer>
           </Content>
         </div>
