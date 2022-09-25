@@ -34,12 +34,12 @@ const App = () => {
     window.location.reload();
   };
 
-  const search = (searchValue) => {
+  const search = (searchValue, year = undefined, type = undefined) => {
     dispatch({
       type: "SEARCH_MOVIES_REQUEST",
     });
 
-    axios(`https://www.omdbapi.com/?s=${searchValue}&apikey=a9aed1bd`).then(
+    axios(`https://www.omdbapi.com/?s=${searchValue}${year ? "&y=" + year : ""}${type !== "Type" ? "&type=" + type.toLowerCase() : ""}&apikey=a9aed1bd`).then(
       (jsonResponse) => {
         if (jsonResponse.data.Response === "True") {
           dispatch({

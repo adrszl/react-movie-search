@@ -3,5 +3,7 @@ export const additionalInfo = {
   Added spaces between rows in results.
   
   01.03.2022 --- added custom styles for cards and spacing. Changes in functionality (improvements). Added advanced
-  parameters section and started functionality for it.`
+  parameters section and started functionality for it.
+  
+  25.09.2022 --- added custom search parameters`
 };

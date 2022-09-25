@@ -6,6 +6,7 @@ import { Form, Input, Button, Row, Col, Checkbox, Divider, Menu, Dropdown } from
 const Search = (props) => {
   const [searchValue, setSearchValue] = useState("");
   const [showAdvanced, setShowAdvancedValue] = useState(false);
+  const [yearValue, setYearValue] = useState("");
   const [typeValue, setTypeValue] = useState("Type");
 
   const handleSearchInputChanges = (e) => {
@@ -14,23 +15,30 @@ const Search = (props) => {
 
   const handleCheckboxChange = () => {
     setShowAdvancedValue(!showAdvanced);
-  }
 
-  // const handleTypesClick = () => {
-    
-  // }
+    if(showAdvanced) {
+      console.log('reseting')
+      setYearValue("");
+      setTypeValue("Type");
+    }
+  }
 
   const handleDropdownClick = () => {
 
   }
 
-  // const resetInputField = () => {
-  //   setSearchValue("");
-  // };
+
+  const handleYearChange = (e) => {
+    setYearValue(e.target.value);
+  }
+
+  const resetInputField = () => {
+    setSearchValue("");
+  };
 
   const callSearchFunction = (e) => {
     e.preventDefault();
-    props.search(searchValue);
+    props.search(searchValue, yearValue && yearValue, typeValue && typeValue);
   };
 
   const types = (
@@ -72,6 +80,14 @@ const Search = (props) => {
           >
             Search
           </Button>
+          <Button
+            type="primary"
+            loading={props.loading}
+            onClick={resetInputField}
+            style={{marginLeft: ".5rem"}}
+          >
+            Reset
+          </Button>
         </Col>
       </Row>
       <Col span={12} className="mt-4">
@@ -82,19 +98,20 @@ const Search = (props) => {
     {showAdvanced ?
       <>
         <Divider orientation="center">Advanced Search Parameters</Divider>
-          <p>Functionality not yet finished. To be continued</p>
           <Row justify="center">
-          <Col span={6}>
-            <Input
-              placeholder="Year"
-              type="number"
-            />
-          </Col>
-          <Col span={6}>
-          <Dropdown.Button onClick={handleDropdownClick} overlay={types} trigger={['click']}>
-            {typeValue}
-          </Dropdown.Button>
-          </Col>
+            <Col span={6}>
+              <Input
+                placeholder="Year"
+                type="text"
+                value={yearValue}
+                onChange={handleYearChange}
+              />
+            </Col>
+            <Col span={6}>
+              <Dropdown.Button onClick={handleDropdownClick} overlay={types} trigger={['click']}>
+                {typeValue}
+              </Dropdown.Button>
+            </Col>
           </Row>
       </>
     : null }
