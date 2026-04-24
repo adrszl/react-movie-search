@@ -5,5 +5,7 @@ export const additionalInfo = {
   01.03.2022 --- added custom styles for cards and spacing. Changes in functionality (improvements). Added advanced
   parameters section and started functionality for it.
   
-  25.09.2022 --- added custom search parameters`
+  25.09.2022 --- added custom search parameters
+  
+  24.04.2026 --- big changes with versions and updates. CRA deleted, Vite introduced. Changes with legacy components.`
 };
