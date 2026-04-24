@@ -95,7 +95,7 @@ const App = () => {
             </Row>
             {/* movie results end */}
             <Footer style={{ textAlign: 'center' }}>
-              <a href="https://adrszl.github.io/" target="_blank" rel="noopener noreferrer">Adrian Szlegel</a> ©2022
+              <a href="https://adrszl.github.io/" target="_blank" rel="noopener noreferrer">Adrian Szlegel</a> ©2022 - {new Date().getFullYear()}
             </Footer>
           </Content>
         </div>
