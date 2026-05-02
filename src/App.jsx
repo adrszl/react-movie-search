@@ -20,6 +20,8 @@ const MOVIE_API_URL = "https://www.omdbapi.com/?s=man&apikey=a9aed1bd";
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const API_KEY = import.meta.env.VITE_API_KEY;
+
   useEffect(() => {
     axios.get(MOVIE_API_URL).then((jsonResponse) => {
       dispatch({
@@ -29,7 +31,6 @@ const App = () => {
     });
   }, []);
 
-  // you can add this to the onClick listener of the Header component
   const refreshPage = () => {
     window.location.reload();
   };
@@ -39,7 +40,7 @@ const App = () => {
       type: "SEARCH_MOVIES_REQUEST",
     });
 
-    axios(`https://www.omdbapi.com/?s=${searchValue}${year ? "&y=" + year : ""}${type !== "Type" ? "&type=" + type.toLowerCase() : ""}&apikey=a9aed1bd`).then(
+    axios(`https://www.omdbapi.com/?s=${searchValue}${year ? "&y=" + year : ""}${type !== "Type" ? "&type=" + type.toLowerCase() : ""}&apikey=${API_KEY}`).then(
       (jsonResponse) => {
         if (jsonResponse.data.Response === "True") {
           dispatch({
@@ -66,7 +67,7 @@ const App = () => {
       <div className="errorMessage">{errorMessage}</div>
     ) : (
       movies.map((movie, index) => (
-        <Col key={`${index}-${movie.Title}`} span={5} style={{marginBottom: ".5rem"}}>
+        <Col key={`${index}-${movie.Title}`} span={4} style={{marginBottom: ".5rem"}}>
           <Movie movie={movie} />
         </Col>
       ))
@@ -90,7 +91,7 @@ const App = () => {
 
             {/* movie results start */}
             <Divider orientation="center">Results</Divider>
-            <Row justify="center">
+            <Row justify="start">
               {retrievedMovies}
             </Row>
             {/* movie results end */}

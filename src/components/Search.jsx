@@ -16,7 +16,7 @@ const Search = (props) => {
   const handleCheckboxChange = () => {
     setShowAdvancedValue(!showAdvanced);
 
-    if(showAdvanced) {
+    if (showAdvanced) {
       console.log('reseting')
       setYearValue("");
       setTypeValue("Type");
@@ -56,48 +56,50 @@ const Search = (props) => {
   );
 
   return (
-    <>
-    <Form.Item
-      label="Search for movies"
-      required
-      tooltip="Please enter search phrase"
-    >
-      <Row justify="center">
-        <Col span={12}>
-          <Input
-            placeholder="eg. Iron Man"
-            value={searchValue}
-            onChange={handleSearchInputChanges}
-            onPressEnter={callSearchFunction}
-            type="text"
-          />
-        </Col>
-        <Col span={12}>
-          <Button
-            type="primary"
-            loading={props.loading}
-            onClick={callSearchFunction}
-          >
-            Search
-          </Button>
-          <Button
-            type="primary"
-            loading={props.loading}
-            onClick={resetInputField}
-            style={{marginLeft: ".5rem"}}
-          >
-            Reset
-          </Button>
-        </Col>
-      </Row>
-      <Col span={12} className="mt-4">
+    <Row justify="center" style={{width: '100%'}}>
+      <Form.Item
+        label="Search for movies"
+        required
+        tooltip="Please enter search phrase"
+      >
+        <Row justify="center" style={{minWidth: '550px'}}>
+          <Col span={12}>
+            <Input
+              id="search-input"
+              placeholder="eg. Iron Man"
+              value={searchValue}
+              onChange={handleSearchInputChanges}
+              onPressEnter={callSearchFunction}
+              type="text"
+            />
+          </Col>
+          <Col span={12}>
+            <Button
+              type="primary"
+              loading={props.loading}
+              onClick={callSearchFunction}
+              style={{ marginLeft: ".5rem" }}
+            >
+              Search
+            </Button>
+            <Button
+              type="primary"
+              loading={props.loading}
+              onClick={resetInputField}
+              style={{ marginLeft: ".5rem" }}
+            >
+              Reset
+            </Button>
+          </Col>
+        </Row>
+        <Col span={12} className="mt-4">
           <Checkbox onChange={handleCheckboxChange}>Show Advanced Search Parameters</Checkbox>
-      </Col>
-      <Col className="gutter-row" flex="row"></Col>
-    </Form.Item>
-    {showAdvanced ?
-      <>
-        <Divider orientation="center">Advanced Search Parameters</Divider>
+        </Col>
+        <Col className="gutter-row" flex="row"></Col>
+      </Form.Item>
+      {showAdvanced ?
+        <>
+          <Divider orientation="center">Advanced Search Parameters</Divider>
           <Row justify="center">
             <Col span={6}>
               <Input
@@ -113,9 +115,9 @@ const Search = (props) => {
               </Dropdown.Button>
             </Col>
           </Row>
-      </>
-    : null }
-    </>
+        </>
+        : null}
+    </Row>
   );
 };
 
