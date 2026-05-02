@@ -7,5 +7,7 @@ export const additionalInfo = {
   
   25.09.2022 --- added custom search parameters
   
-  24.04.2026 --- big changes with versions and updates. CRA deleted, Vite introduced. Changes with legacy components.`
+  24.04.2026 --- big changes with versions and updates. CRA deleted, Vite introduced. Changes with legacy components.
+  
+  02.05.2026 --- visual changes and amendments. API key added to secrets. Single movie view and preview added.`
 };

@@ -13,15 +13,14 @@ import Search from "./components/Search";
 import { initialState, reducer } from "./store/reducer";
 import axios from "axios";
 
-const MOVIE_API_URL = "https://www.omdbapi.com/?s=man&apikey=a9aed1bd";
-
 // DESIGN SYSTEM: https://ant.design/
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const API_KEY = import.meta.env.VITE_API_KEY;
-
+  const MOVIE_API_URL = `https://www.omdbapi.com/?s=man&apikey=${API_KEY}`;
+  
   useEffect(() => {
     axios.get(MOVIE_API_URL).then((jsonResponse) => {
       dispatch({
